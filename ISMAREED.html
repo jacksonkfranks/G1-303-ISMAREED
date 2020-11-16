@@ -82,7 +82,45 @@ div.LoveHeart p
     <script>
         function FindTheLove()
         {
-            //iLovecount with name and love frase
+            <script>
+        function FindTheLove()
+        {
+            //iLovecount with name and love phrase
+            //declare variables and change to uppercase
+            var sLovePhrase = document.getElementById("LovePhrase").value.toUpperCase();
+            var name1 = document.getElementById("FullName1").value.toUpperCase();
+            var name2 = document.getElementById("FullName2").value.toUpperCase();
+            var iLoveCount = 0;
+            // parse variables into individual characters
+            function splitString(myString) {
+                var myArray = [];
+                for (let i = 0; i < myString.length; i++)
+                {
+                    myArray[i] = myString.substr(i, 1);
+                }
+                return myArray;
+            }
+            //call parsing function to make strings into array
+            var aLovePhrase = splitString(sLovePhrase);
+            var aName1 = splitString(name1);
+            var aName2 = splitString(name2);
+            // for loop to compare each name to the love phrase
+            function compareName(nameParam) {
+                for (let i = 0; i < nameParam.length; i++) {
+                    for (let j = 0; j < aLovePhrase.length; j++) {
+                        if (aLovePhrase[j] === nameParam[i]) {
+                            iLoveCount++;
+                        }
+                        else {
+                            iLoveCount = iLoveCount;
+                        }
+                    }
+                }
+            }
+            //call function to compare name to love phrase
+            compareName(aName1);
+            compareName(aName2);
+
             //iFactor count for checkboxes
             
             if (iPower >= 100){
