@@ -51,14 +51,14 @@ div.LoveHeart p
 
     <br><br>
 
-    <div>
+    <div id="checkies">
         <input type="checkbox" id="Coms">
         <label for="Coms">We will communicate often</label>
     <br><br>
         <input type="checkbox" id="Selfish">
         <label for="Selfish">We will not be Selfish</label>
     <br><br>
-        <input type="checkbox" id="Selfish">
+        <input type="checkbox" id="Service">
         <label for="Service">We will serve each other</label>
     <br><br>
         <input type="checkbox" id="BFF">
@@ -79,10 +79,7 @@ div.LoveHeart p
         <p id="output"></p>
     </div>
     
-    <script>
-        function FindTheLove()
-        {
-            <script>
+    <script>      
         function FindTheLove()
         {
             //iLovecount with name and love phrase
@@ -122,7 +119,29 @@ div.LoveHeart p
             compareName(aName2);
 
             //iFactor count for checkboxes
+            var iFactor = 1;
+            var iPower;
+            var adder = 0;
+            var godCheck = 0;
+            var cont = document.getElementById("checkies").children;
+
+            for (var i = 0; i < cont.length; i++) {
+                if (cont[i].checked && document.getElementById("God").checked == false) {
+                    adder = adder + .25;
+                    finalAdder = adder;
+                    godCheck = 0;
+                }
+                else if (cont[i].checked && document.getElementById("God").checked == true) {
+                    adder = adder + .25;
+                    finalAdder = adder - .25;
+                    godCheck = .50;
+                }
+            }
             
+            //calculate iPower based on checkboxes
+            iPower = Math.ceil(((iLoveCount / sLovePhrase.length) * 22) *(iFactor + finalAdder + godCheck));
+            
+            //display messages based on iPower value
             if (iPower >= 100){
                 Mesg = "Perfect Marriage"}
             else if (iPower >= 85){
